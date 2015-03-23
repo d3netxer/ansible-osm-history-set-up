@@ -2,6 +2,7 @@
 system_packages:
   - build-essential
   - git
+  - git-core
   - curl
   - make
   - vim
@@ -47,12 +48,10 @@ system_packages:
   - pgadmin3
   - libosmpbf-dev
   - osm2pgsql
-  - tilemill 
   - libmapnik 
   - gdal-bin
   - mapnik-utils
-  - qgis
-  - openjdk-7-jdk 
   - proj 
   - libprotobuf-c0-dev
+  - libssl-dev
 
