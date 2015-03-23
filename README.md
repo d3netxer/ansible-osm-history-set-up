@@ -1,4 +1,3 @@
-#osmbox
 
 The main purposed of this box is to create an environment that makes it easy to create historical mapping tiles in OpenStreetMap.
 
@@ -120,3 +119,7 @@ The final .ovf file will be inside the output-virtualbox-ovf3 directory. The fin
   - kakrueger/osm-unstable
   - developmentseed/mapbox
 
+=======
+# ansible-osm-history-set-up
+ansible script to set-up osm-history on Ubuntu
+>>>>>>> cc021ff016d930aa3106471181195f969c4fb21c
