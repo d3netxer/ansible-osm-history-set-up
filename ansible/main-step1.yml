@@ -3,13 +3,14 @@
   vars_files:
     - vars.yml
   sudo: yes
+  user: ubuntu
   tasks:
   - name: add repositories 
     apt_repository: "'repo=ppa:ubuntugis/ppa' 'state=present'"
-  - name: add repositories 2
-    apt_repository: "'repo=ppa:kakrueger/osm-unstable' 'state=present'"
-  - name: add repositories 3
-    apt_repository: "'repo=ppa:developmentseed/mapbox' 'state=present'"
+#  - name: add repositories 2
+#    apt_repository: "'repo=ppa:kakrueger/osm-unstable' 'state=present'"
+#  - name: add repositories 3
+#    apt_repository: "'repo=ppa:developmentseed/mapbox' 'state=present'"
   - name: Install required system packages.
     apt: pkg={{ item }} state=installed update-cache=yes
     with_items: 
