@@ -1,31 +1,16 @@
 
 Use Ansible to provision an Ubuntu instance to run OSM-History.
 
-#####Building osmbox yourself:
+#####Next Steps:
 
-Three different packer templates are meant to be run in order. This is done so new features can be added in an incremental fashion.
-
-Install [packer](https://www.packer.io/intro/getting-started/setup.html) first. 
-
--packer build osmbox-step1-install-os.json
-
-This will output a osmbox-step1 .ovf and .vmdk file in the newly created output-virtualbox-iso directory
-
--packer build osmbox-step2-install-software.json
-
-This will output a .ovf file in the newly created output-virtualbox-ovf directory
-
--packer build osmbox-step3-configure-system.json
-
-The final .ovf file will be inside the output-virtualbox-ovf3 directory. The final Vagrant box file will be inside the step3-box directory.
-
-##What's installed
-
--ubuntu 12.04 desktop (credit to: https://github.com/boxcutter/ubuntu)
+in osm-history repo:
+  - run 'npm install'
+  - run 'npm install mongodb'
 
 ###system_packages:
   - build-essential
   - git
+  - git-core
   - curl
   - make
   - vim
@@ -71,14 +56,12 @@ The final .ovf file will be inside the output-virtualbox-ovf3 directory. The fin
   - pgadmin3
   - libosmpbf-dev
   - osm2pgsql
-  - tilemill 
   - libmapnik 
   - gdal-bin
   - mapnik-utils
-  - qgis
-  - openjdk-7-jdk 
   - proj 
   - libprotobuf-c0-dev
+  - libssl-dev
 
   ###repos:
 
@@ -88,6 +71,7 @@ The final .ovf file will be inside the output-virtualbox-ovf3 directory. The fin
   - openstreetmap-history
   - protobuf
   - protobuf-c
+  - osm-meta-util
 
   ###openstreetmap-history gemfile installs:
 
@@ -112,7 +96,4 @@ The final .ovf file will be inside the output-virtualbox-ovf3 directory. The fin
   - kakrueger/osm-unstable
   - developmentseed/mapbox
 
-=======
-# ansible-osm-history-set-up
-ansible script to set-up osm-history on Ubuntu
->>>>>>> cc021ff016d930aa3106471181195f969c4fb21c
+
