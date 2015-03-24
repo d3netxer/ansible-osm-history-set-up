@@ -1,5 +1,23 @@
 
-Use Ansible to provision an Ubuntu instance to run OSM-History.
+Use Ansible to provision an Ubuntu trusty instance to run OSM-History.
+
+This is a work in progress...
+
+Some current stuff that needs to be taken care of manually:
+
+for some reason Ansible doesn't want to do apt-get update
+
+gem install nokogiri --pre
+
+apt-get install libxslt-dev
+
+gem install nokogiri (1.5.0 couldn't make), instead commented out nokogiri from Gemfile (and installed newer version)
+
+install node js (need a new version, such as 12.01) http://monicalent.com/blog/2014/06/13/install-node-js-on-debian-squeeze/
+
+sudo apt-get install rake
+
+install mongo db on system and in node
 
 #####Next Steps:
 
