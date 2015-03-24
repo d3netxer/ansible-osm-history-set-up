@@ -1,17 +1,25 @@
 ---
-- hosts: all
+- hosts: localhost
   vars_files:
     - vars.yml
   sudo: yes
+  user: root
+  connection: local
+  gather_facts: False
   tasks:
   - name: add repositories 
-    apt_repository: "'repo=ppa:ubuntugis/ppa' 'state=present'"
+    apt_repository: "'repo=ppa:ubuntugis/ubuntugis-unstable' 'state=present'"
   - name: add repositories 2
     apt_repository: "'repo=ppa:kakrueger/osm-unstable' 'state=present'"
   - name: add repositories 3
     apt_repository: "'repo=ppa:developmentseed/mapbox' 'state=present'"
+  - name: add repositories 4
+    apt_repository: "'repo:ppa:rael-gc/rvm' 'state=present'"
+#  - name: update apt cache
+#    apt: update_cache=yes
   - name: Install required system packages.
-    apt: pkg={{ item }} state=installed update-cache=yes
+    apt: pkg={{ item }} state=installed 
+    sudo_user: root
     with_items: 
       - "{{ system_packages }}"
   - name: install django
@@ -27,8 +35,7 @@
   - name: clone repo 4
     git: clone=yes repo=https://github.com/d3netxer/osm-history dest=/opt/osm-history
   - name: clone repo 5
-    git: clone=yes repo=https://github.com/mikelmaron/osm-meta-util
-
+    git: clone=yes repo=https://github.com/mikelmaron/osm-meta-util dest=/opt/osm-meta-util
 
 
 

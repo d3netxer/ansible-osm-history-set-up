@@ -1,11 +1,14 @@
 ---
 #play 1
-- hosts: all
+- hosts: localhost
   vars_files:
     - vars.yml
   sudo: yes
-  roles:
-  - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True }
+  user: root
+  connection: local
+  gather_facts: False
+#  roles:
+#  - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True }
   tasks:
   - name: make doc osmium
     command: "make doc chdir=/opt/osmium/"
@@ -14,7 +17,7 @@
   - name: make osm-history-splitter
     command: "make chdir=/opt/osm-history-splitter/" 
   - name: add rvm to bashrc
-    lineinfile: dest=/home/vagrant/.bashrc line="source /etc/profile.d/rvm.sh"
+    lineinfile: dest=/home/ubuntu/.bashrc line="source /etc/profile.d/rvm.sh"
   - name: clone repo 6
     git: clone=yes repo=https://github.com/google/protobuf dest=/opt/protobuf
   - name: autogen protobuf
@@ -40,34 +43,39 @@
   - name: make install protobuf
     command: "make install chdir=/opt/protobuf-c/"
   - name: change permissions
-    file: path=/opt owner=vagrant group=vagrant state=directory recurse=yes
+    file: path=/opt owner=ubuntu group=ubuntu state=directory recurse=yes
   - name: change permissions
-    file: path=/usr/local/rvm owner=vagrant group=vagrant state=directory recurse=yes
+    file: path=/usr/local/rvm owner=ubuntu group=ubuntu state=directory recurse=yes 
+
 
 #play 2
-- hosts: all
-  sudo: no
-  gather_facts: no
+#- hosts: localhost
+#  sudo: yes
+#  connection: local
+#  gather_facts: False
 
-  tasks:
-  - name: bundler install
-    command: "bundle install chdir=/opt/osm-history/"
+#  tasks:
+#  - name: bundler install
+#    command: "bundle install chdir=/opt/osm-history/"
 
 #play 3
-- hosts: all
-  sudo_user: postgres
-  sudo: yes
-  gather_facts: no
+#- hosts: all
+#  sudo_user: postgres
+#  sudo: yes
+#  gather_facts: no
 
-  tasks:
-  - name: create database
-    postgresql_db: name=vagrant
-  - name: create vagrant postgres user
-    postgresql_user: db=vagrant name=vagrant password=vagrant priv=ALL role_attr_flags=CREATEDB,CREATEUSER
+#  tasks:
+#  - name: create database
+#    postgresql_db: name=vagrant
+#  - name: create vagrant postgres user
+#    postgresql_user: db=vagrant name=vagrant password=vagrant priv=ALL role_attr_flags=CREATEDB,CREATEUSER
 
 #play 4, install node js from source
-- hosts: all
+- hosts: localhost
   sudo: yes
+  user: root
+  connection: local
+  gather_facts: False
   vars:
     repo_basedir: ..
     node_version: "0.10.12"
