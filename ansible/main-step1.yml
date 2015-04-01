@@ -3,7 +3,6 @@
   vars_files:
     - vars.yml
   sudo: yes
-<<<<<<< HEAD
   user: root
   connection: local
   gather_facts: False
@@ -14,20 +13,10 @@
     apt_repository: "'repo=ppa:kakrueger/osm-unstable' 'state=present'"
   - name: add repositories 3
     apt_repository: "'repo=ppa:developmentseed/mapbox' 'state=present'"
-  - name: add repositories 4
-    apt_repository: "'repo:ppa:rael-gc/rvm' 'state=present'"
-#  - name: update apt cache
-#    apt: update_cache=yes
-=======
-  user: ubuntu
-  tasks:
-  - name: add repositories 
-    apt_repository: "'repo=ppa:ubuntugis/ppa' 'state=present'"
-#  - name: add repositories 2
-#    apt_repository: "'repo=ppa:kakrueger/osm-unstable' 'state=present'"
-#  - name: add repositories 3
-#    apt_repository: "'repo=ppa:developmentseed/mapbox' 'state=present'"
->>>>>>> origin
+#  - name: add repositories 4
+#    apt_repository: "'repo=ppa:rael-gc/rvm' 'state=present'"
+  - name: update apt cache
+    apt: update_cache=yes
   - name: Install required system packages.
     apt: pkg={{ item }} state=installed 
     sudo_user: root

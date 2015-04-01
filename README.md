@@ -1,5 +1,8 @@
 
-Use Ansible to provision an Ubuntu trusty instance to run OSM-History.
+Use Ansible to provision an Ubuntu trusty (14.04) instance to run OSM-History.
+
+-You can easily test this by just starting up a basic Ubuntu machine on VirtualBox or by using Vagrant
+
 
 This is a work in progress...
 
