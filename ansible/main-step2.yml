@@ -17,7 +17,7 @@
   - name: make osm-history-splitter
     command: "make chdir=/opt/osm-history-splitter/" 
   - name: add rvm to bashrc
-    lineinfile: dest=/home/ubuntu/.bashrc line="source /etc/profile.d/rvm.sh"
+    lineinfile: dest=/home/{{ ansible_ssh_user }}/.bashrc line="source /etc/profile.d/rvm.sh"
   - name: clone repo 6
     git: clone=yes repo=https://github.com/google/protobuf dest=/opt/protobuf
   - name: autogen protobuf
@@ -43,9 +43,9 @@
   - name: make install protobuf
     command: "make install chdir=/opt/protobuf-c/"
   - name: change permissions
-    file: path=/opt owner=ubuntu group=ubuntu state=directory recurse=yes
+    file: path=/opt owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=directory recurse=yes
   - name: change permissions
-    file: path=/usr/local/rvm owner=ubuntu group=ubuntu state=directory recurse=yes 
+    file: path=/usr/local/rvm owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=directory recurse=yes 
 
 
 #play 2
