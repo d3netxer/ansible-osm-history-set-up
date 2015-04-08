@@ -13,8 +13,12 @@
     apt_repository: "'repo=ppa:kakrueger/osm-unstable' 'state=present'"
   - name: add repositories 3
     apt_repository: "'repo=ppa:developmentseed/mapbox' 'state=present'"
-#  - name: add repositories 4
-#    apt_repository: "'repo=ppa:rael-gc/rvm' 'state=present'"
+  - name: add repositories 4
+    apt_repository: "'repo=ppa:sharpie/for-science' 'state=present'"
+  - name: add repositories 5
+    apt_repository: "'repo=ppa:sharpie/postgis-stable' 'state=present'"
+  - name: add repositories 6
+    apt_repository: "'repo=ppa:rael-gc/rvm' 'state=present'"
   - name: update apt cache
     apt: update_cache=yes
   - name: Install required system packages.

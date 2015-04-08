@@ -28,7 +28,8 @@ system_packages:
 #  - postgresql-9.1
 #  - postgresql-9.1-postgis-2.0
 #  - postgresql-contrib-9.1
-  - postgresql-9.3-postgis-2.1
+  - postgresql-9.1-postgis
+#  - postgresql-9.3-postgis-2.1
   - zlib1g-dev
   - libexpat1
   - libexpat1-dev
@@ -58,4 +59,4 @@ system_packages:
   - autoconf
   - rvm
   - ruby
-  - bundler
+#  - bundler
